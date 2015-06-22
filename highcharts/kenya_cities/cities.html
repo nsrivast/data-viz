@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Highcharts Example: Mid-Size Kenyan Cities</title>
+
+  <script src="../jquery.min.js"></script>
+  <script src="../highcharts.js"></script>   
+	<script src="../exporting.js"></script> 
+
+  <script src="./cities.js"></script>    
+</head>
+
+<body>
+  
+  <div id="container" style="width:500px; height:600px;"></div>
+
+  <script>
+  $(function() {
+		
+		// Left-aligned data labels with name of city, colored by county
+		var dataLabelOptions = {
+      enabled: true,
+      allowOverlap: true,
+      overflow: "none",
+      crop: false,
+      formatter: function() {
+         return "<p style=\"color:" + this.point.color + "\">" + this.point.name + "</p>"
+      },
+      style: {
+        fontSize: "12px"
+      },
+      backgroundColor: "white"			
+		};
+		
+		// Bar chart with left margin, no x-axis ticks or labels, y-axis at top, no legend
+		var chartOptions = {
+      chart: {
+        type: 'bar',
+        marginLeft: 125
+      },
+      title: {
+        text: 'Kenyan City Populations'
+      },
+      xAxis: {
+        tickLength: 0,
+        labels: {
+          enabled: false,
+        }
+      },
+      yAxis: {
+        title: {
+          text: ""
+        },
+        opposite: true
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: dataLabelOptions
+        }
+      },
+      series: [{ 
+				data: cityData 
+			}],
+      legend: {
+        enabled: false
+      }
+		};
+		
+		// Renders county labels as text on chart, colored by county
+		function addCountyLabels(counties) {
+			return function(chart) {
+	      chart.renderer.text("(County)", 15, 60)
+					.css({ color: 'gray'})
+					.add();
+					
+				counties.forEach(function(c) {
+	        chart.renderer.text(c.name, c.x, c.y)
+	          .css({ color: c.color, fontSize: '16px', fontWeight: 'bold' })
+	          .add();
+				})
+			};
+		};
+		
+    $('#container').highcharts(chartOptions, addCountyLabels(countyData));
+
+  });
+
+  </script>
+  
+</body>
+</html>

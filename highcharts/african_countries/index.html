@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Highcharts Example: World Cities</title>
+
+  <script src="../jquery.min.js"></script>
+  <script src="../highcharts.js"></script>   
+	<script src="../exporting.js"></script> 
+
+  <script src="./data.js"></script>    
+</head>
+
+<body>
+  
+  <div id="container" style="width:700px; height:600px;"></div>
+
+  <script>
+		
+	$(function () {
+    $('#container').highcharts({
+      chart: {
+        type: 'scatter'
+      },
+      title: {
+        text: 'GDP vs Population, African Countries (2015)'
+      },
+      xAxis: {
+        title: {
+          text: 'Population'
+        },
+				type: "logarithmic"
+      },
+      yAxis: {
+        title: {
+          text: 'GDP (USD)'
+        },
+				type: "logarithmic"
+      },
+			legend: {
+				enabled: false
+			},
+      plotOptions: {
+        scatter: {
+					tooltip: {
+						headerFormat: '<b>{point.key}</b><br/>',
+						pointFormat: '({point.x}, {point.y})'
+					},
+					dataLabels: {
+						y: 15,
+			      enabled: true,
+						padding: 0,
+						allowOverlap: true,
+			      formatter: function() {
+			         return "<p style=\"color:" + this.point.series.color + "\">" + this.point.display + "</p>"
+			      }
+					}
+        }
+      },
+      series: [
+				{ color: 'blue', data: nonKenyaData },
+				{ color: 'red', data: kenyaData }
+			]
+    });
+		
+	});
+	
+  </script>
+  
+</body>
+</html>

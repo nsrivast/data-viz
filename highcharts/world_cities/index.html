@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Highcharts Example: World Cities</title>
+
+  <script src="../jquery.min.js"></script>
+  <script src="../highcharts.js"></script>   
+	<script src="../exporting.js"></script> 
+
+  <script src="./cities.js"></script>    
+</head>
+
+<body>
+  
+  <div id="container" style="width:700px; height:600px;"></div>
+
+  <script>
+		
+	$(function () {
+    $('#container').highcharts({
+      chart: {
+        type: 'scatter'
+      },
+      title: {
+        text: 'Cost of Living vs Competitiveness, Select World Cities'
+      },
+      xAxis: {
+        title: {
+          text: 'Cost of Living (NYC = 100)'
+        }
+      },
+      yAxis: {
+        title: {
+          text: 'Competitiveness'
+        }
+      },
+			legend: {
+				enabled: false
+			},
+      plotOptions: {
+        scatter: {
+          tooltip: {
+						headerFormat: '',
+            pointFormat: '({point.x}, {point.y})'
+          },
+					dataLabels: {
+			      enabled: true,
+			      allowOverlap: true,
+			      formatter: function() {
+			         return "<p style=\"color:" + this.point.series.color + "\">" + this.point.name + "</p>"
+			      }
+					}
+        }
+      },
+      series: [
+				{
+					color: 'blue',
+					data: [
+						{"name":"New York","x":100,"y":71.4},
+						{"name":"Hong Kong","x":77.36,"y":69.3},
+						{"name":"Philadelphia","x":88.57,"y":58.5},
+						{"name":"Berlin","x":74.72,"y":58.2},
+						{"name":"New Delhi","x":29.66,"y":46.7},
+						{"name":"Istanbul","x":53.4,"y":45.5},
+						{"name":"Mexico City","x":47.09,"y":46.2},
+						{"name":"Bangkok","x":52.1,"y":49}
+					]
+				}, {
+					color: 'red',
+					data: [
+						{"name":"Nairobi","x":54.34,"y":34.6}
+					]
+				}
+			]
+    });
+		
+	});
+	
+  </script>
+  
+</body>
+</html>
