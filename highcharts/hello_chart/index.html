@@ -1,44 +1,42 @@
 <!DOCTYPE html>
-
 <html>
-<head>
-  <title>Highcharts Example</title>
 
-  <script src="../jquery.min.js"></script>
-  <script src="../highcharts.js"></script>    
-</head>
+  <head>
+    <title>Highcharts Example</title>
+    <script src="../jquery.min.js"></script>
+    <script src="../highcharts.js"></script>    
+  </head>
 
-<body>
+  <body>
+    <div id="container" style="width:600px; height:400px;"></div>
   
-  <div id="container" style="width:600px; height: 400px;">
-  </div>
-  
-  <script>
-	  $(function() {
-		
-			var options = {
-				chart: {
-					type: "line"
-				},
-				title: {
-					text: "Hello, Chart"
-				},
-				series: [
-					{
-						name: "A",
-						data: [[1,1],[2,3],[3,5],[4,7],[5,9]]
-					},
-					{
-						name: "B",
-						data: [[1,2],[2,3],[3,4],[4,5],[5,6]]
-					}
-				]
-			};
-		
-	    $('#container').highcharts(options);
+    <script>
+      $(function() {
+    
+        var options = {
+          chart: {
+            type: "line"
+          },
+          title: {
+            text: "Hello, Chart"
+          },
+          series: [
+            {
+              name: "A",
+              data: [[1,1],[2,3],[3,5],[4,7],[5,9]]
+            },
+            {
+              name: "B",
+              data: [[1,2],[2,3],[3,4],[4,5],[5,6]]
+            }
+          ]
+        };
+    
+        $('#container').highcharts(options);
 
-	  });
-  </script>
+      });
+    </script>
   
-</body>
+  </body>
+
 </html>
