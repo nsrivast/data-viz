@@ -1,1 +1,1 @@
-Coming soon.
+See [class website](http://nsrivast.github.io/data-viz-nairobi/).
