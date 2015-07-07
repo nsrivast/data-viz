@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Highcharts Example: Basic Charts</title>
+
+  <script src="../jquery.min.js"></script>
+  <script src="../highcharts.js"></script>   
+	<script src="../exporting.js"></script> 
+
+  <script src="./basic_charts.js"></script>    
+  <script src="./data.js"></script>    
+</head>
+
+<body>
+  
+	<div>Scatter</div>
+  <div id="scatter" style="width:500px; height:300px;"></div>
+	<div>Scatter Plus Hue</div>
+  <div id="scatterPlusHue" style="width:500px; height:300px;"></div>
+	<div>Scatter Plus Size</div>
+  <div id="scatterPlusSize" style="width:500px; height:300px;"></div>
+
+	<div>Line</div>
+  <div id="line" style="width:500px; height:300px;"></div>
+	<div>Multi-Line</div>
+  <div id="multiline" style="width:500px; height:300px;"></div>
+	<div>Area</div>
+  <div id="area" style="width:500px; height:300px;"></div>
+	
+	<div>Bar</div>
+  <div id="bar" style="width:500px; height:300px;"></div>
+	<div>Multi-Bar (Grouped)</div>
+  <div id="barGrouped" style="width:500px; height:300px;"></div>
+	<div>Multi-Bar (Stacked)</div>
+  <div id="barStacked" style="width:500px; height:300px;"></div>
+	
+	<div>Histogram</div>
+  <div id="histogram" style="width:500px; height:300px;"></div>
+	
+	<div>Pie</div>
+  <div id="pie" style="width:500px; height:300px;"></div>
+
+  <script>
+		
+	$(function () {
+		
+		// === SCATTER PLOTS 
+		
+		var scatterData = sampleData.map( function(d) {
+			return { name: '', x: d.q1, y: d.q2, color: "blue" }
+		});
+		var scatterPlusHueData = sampleData.map( function(d) {
+			return { name: d.c2, x: d.q1, y: d.q2, color: d.c2 == "Male" ? "blue" : "red" }
+		});
+		var scatterPlusSizeData = sampleData.map( function(d) {
+			return { name: `(${d.q3})`, x: d.q1, y: d.q2, radius: d.q3 }
+		});
+		
+		plotScatter("scatter", { series: [{ data: scatterData }] });
+		plotScatter("scatterPlusHue", { series: [{ data: scatterPlusHueData }] });
+		plotScatter("scatterPlusSize", { series: [{ data: scatterPlusSizeData }] });
+
+		// === LINE AND AREA CHARTS
+
+		var lineData = sampleData.map( function(d, i) { return { name: '', x: i, y: d.q1 } });
+		var lineData2 = sampleData.map( function(d, i) { return { name: '', x: i, y: d.q1*2 } });
+		var lineData3 = sampleData.map( function(d, i) { return { name: '', x: i, y: d.q1+4 } });
+		var lineSeries = [
+			{ data: lineData },
+			{ data: lineData2 },
+			{ data: lineData3 }
+		];
+		
+		plotLine("line", { series: [{ data: lineData }] });
+		plotLine("multiline", { series: lineSeries });
+		plotAreaStacked("area", { series: lineSeries });
+		
+		// === BAR CHART
+				
+		var barNames = sampleData.slice(1, 6).map( function(d) { return d.name; });
+		var barValues = sampleData.slice(1, 6).map( function(d) { return d.q1; });
+		var barSeries = [
+			{ name: 'A', data: barValues },
+			{ name: 'B', data: barValues.map( function(x) { return x*2 }) },
+			{ name: 'C', data: barValues.map( function(x) { return x + 4 }) }
+		];
+		
+		plotBar("bar", [{ name: '', data: barValues }], barNames);
+		plotBar("barGrouped", barSeries, barNames);
+		plotBarStacked("barStacked", barSeries, barNames);
+
+		plotBar("histogram", [{ name: '', data: [12,31,45,52,36,22,8] }],
+			['0-10','10-20','20-30','30-40','40-50','50-60','60-70']
+		);
+		
+		// === PIE CHART
+			
+		var pieData = sampleData.slice(1,7).map( function(d) {
+			return { name: d.name, y: d.q1 }
+		});
+		
+		plotPie("pie", { series: [{ data: pieData }]});
+		
+	});
+	
+  </script>
+  
+</body>
+</html>
