@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+
+    <script src="./group.js"></script>
+    <script src="./sample-data.js"></script>
+    <script src="./basic_charts.js"></script>
+    <script src="http://code.jquery.com/jquery-2.0.0.js"></script>
+	  <script src="http://code.highcharts.com/highcharts.js"></script>
+  </head>
+	
+  <body>
+		
+    <div id="bar"></div>
+		
+    <script type="text/javascript">
+      $(function () {
+				
+				var assignGroup = function(earned_days) {
+					var dateRanges = [0, 61, 122, 183, 244, 305, 366];
+					for (var i = 0; i < dateRanges.length; i++) {
+						if (earned_days < dateRanges[i]) {
+							return `${dateRanges[i-1]} to ${dateRanges[i]}`;
+						}
+					}
+					return "no group found";
+				};
+				
+				var groupData = groupByField(sampleData, "Earned_Days", assignGroup);
+				
+				var groups = Object.keys(groupData);
+				var groupAverageLossRatio = groups.map( function(groupName) {
+					lossRatios = groupData[groupName].map( function(obj) { return obj["Loss_Ratio"] });
+					sum = lossRatios.reduce(function(a, b) { return a + b; });
+					return sum / lossRatios.length;
+				});
+				
+				plotBar("bar", [{ name: '', data: groupAverageLossRatio }], groups);
+
+      });
+
+    </script>
+  </body>
+</html>

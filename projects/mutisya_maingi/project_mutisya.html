@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+		
+    <script src="http://code.jquery.com/jquery-2.0.0.js"></script>
+	  <script src="http://code.highcharts.com/highcharts.js"></script>
+  </head>
+	
+  <body>
+		
+    <div id="bar"></div>
+		
+    <script type="text/javascript">
+				$(function () {
+				    // Create the chart
+				    $('#container').highcharts({
+				        chart: {
+				            type: 'column'
+				        },
+				        title: {
+				            text: 'Revenue by Client - May, 2015'
+				        },
+				        subtitle: {
+				            text: 'Click the columns to view Projects'
+				        },
+				        xAxis: {
+				            type: 'category'
+				        },
+				        yAxis: {
+				            title: {
+				                text: 'Total Revenue %'
+				            }
+
+				        },
+				        legend: {
+				            enabled: false
+				        },
+				        plotOptions: {
+				            series: {
+				                borderWidth: 0,
+				                dataLabels: {
+				                    enabled: true,
+				                    format: '{point.y:.1f}%'
+				                }
+				            }
+				        },
+
+				        tooltip: {
+				            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+				            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+				        },
+
+				        series: [{
+				            name: "Clients",
+				            colorByPoint: true,
+				            data: [{
+				                name: "Ancestry.com",
+				                y: 42.79,
+				                drilldown: "Ancestry.com"
+				            }, {
+				                name: "RedFlag Group",
+				                y: 14.79,
+				                drilldown: "RedFlag Group"
+				            }, {
+				                name: "InPlay",
+				                y: 8.13,
+				                drilldown: "InPlay"
+				            }, {
+				                name: "Intuit",
+				                y: 26.75,
+				                drilldown: "Intuit"
+				            }, {
+				                name: "UNEP",
+				                y: 7.55,
+				                drilldown: null
+				            }]
+				        }],
+				        drilldown: {
+				            series: [{
+				                name: "Ancestry.com",
+				                id: "Ancestry.com",
+				                data: [
+				                    [
+				                        "English",
+				                        34.72
+				                    ],
+				                    [
+				                        "Spanish",
+				                        7.88
+				                    ],
+				                    [
+				                        "French",
+				                        12.6
+				                    ],
+				                    [
+				                        "German",
+				                        28.61
+				                    ],
+				                    [
+				                        "Swahili",
+				                        1.86
+				                    ],
+				                    [
+				                        "Portuguese",
+				                        8.99
+				                    ],
+				                    [
+				                        "Arabic",
+				                        5.33
+				                    ]
+				                ]
+				            }, {
+				                name: "RedFlag Group",
+				                id: "RedFlag Group",
+				                data: [
+				                    [
+				                        "Due Diligence English",
+				                        40.18
+				                    ],
+				                    [
+				                        "Due Diligence Arabic",
+				                        26.10
+				                    ],
+				                    [
+				                        "Daily Monitoring French",
+				                        21.23
+				                    ],
+				                    [
+				                        "Database Clean Up",
+				                        12.49
+				                    ]
+                    
+				                ]
+				            }, {
+				                name: "InPlay",
+				                id: "InPlay",
+				                data: [
+				                    [
+				                        "English",
+				                        39.31
+				                    ],
+				                    [
+				                        "French",
+				                        60.69
+				                    ]
+				                ]
+				            }, {
+				                name: "Intuit",
+				                id: "Intuit",
+				                data: [
+				                    [
+				                        "English",
+				                        21.79
+				                    ],
+				                    [
+				                        "Mandarin",
+				                        17.20
+				                    ],
+				                    [
+				                        "German",
+				                        22.35
+				                    ],
+				                    [
+				                        "French",
+				                        34.39
+				                    ],
+				                    [
+				                        "Arabic",
+				                        4.27
+				                    ]
+				                ]
+       
+				            }]
+				        }
+				    });
+				
+				$("#bar").highcharts(options);
+
+      });
+
+    </script>
+  </body>
+</html>

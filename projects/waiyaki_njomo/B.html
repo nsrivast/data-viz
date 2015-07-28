@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+
+    <script src="http://code.jquery.com/jquery-2.0.0.js"></script>
+	  <script src="http://code.highcharts.com/highcharts.js"></script>
+  </head>
+	
+  <body>
+		
+    <div id="bar"></div>
+		
+    <script type="text/javascript">
+      $(function () {
+				
+				var options = {
+					"title": {
+						"text": "Annual Sales by Branch"
+					},
+					"yAxis": {
+						"title": {
+							"text": "Sales [ KSH ]"
+						}
+					},
+					"xAxis": {
+						"type": "category"
+					},
+					"series": [
+						{
+							"type": "scatter",
+							"index": 0,
+							"name": "Total",
+							"data": [
+								[
+									"BURU BURU",
+									33270558
+								],
+								[
+									"CITY SQUARE",
+									81486612
+								],
+								[
+									"DIRECT SALES AGENCY",
+									12614686
+								],
+								[
+									"ELDORET BRANCH",
+									35597174
+								],
+								[
+									"EMBU",
+									30649470
+								],
+								[
+									"HEAD OFFICE",
+									285691583
+								],
+								[
+									"HOMABAY",
+									15000
+								],
+								[
+									"INDUSTRIAL AREA BRANCH",
+									75165269
+								],
+								[
+									"KAKAMEGA",
+									14053858
+								],
+								[
+									"KERICHO",
+									10701771
+								],
+								[
+									"KISII BRANCH",
+									13445915
+								],
+								[
+									"KISUMU",
+									40080862
+								],
+								[
+									"KITALE",
+									17885945
+								],
+								[
+									"KITENGELA",
+									9850621
+								],
+								[
+									"MACHAKOS",
+									13565156
+								],
+								[
+									"MALINDI",
+									3078749
+								],
+								[
+									"MERU",
+									11637442
+								],
+								[
+									"MICK HSE (GIB) SALES UNIT",
+									14631987
+								],
+								[
+									"MOI AVENUE BRANCH",
+									3221141
+								],
+								[
+									"MOMBASA",
+									32502051
+								],
+								[
+									"NAKURU",
+									37267124
+								],
+								[
+									"NGONG ROAD",
+									55550073
+								],
+								[
+									"NYERI",
+									25602042
+								],
+								[
+									"ONGATA RONGAI",
+									7021051
+								],
+								[
+									"THIKA",
+									53372483
+								],
+								[
+									"VOI",
+									3634811
+								],
+								[
+									"WESTLANDS",
+									65864423
+								]
+							]
+						}
+					]
+				};
+				
+				
+				$("#bar").highcharts(options);
+
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+
+    <script src="./countByColumn.js"></script>
+    <script src="./fresh-comma-delimited.js"></script>
+    <script src="http://code.jquery.com/jquery-2.0.0.js"></script>
+	  <script src="http://code.highcharts.com/highcharts.js"></script>
+  </head>
+	
+  <body>
+		
+    <div id="piechart"></div>
+		
+		<p>ok</p>
+		
+    <script type="text/javascript">
+      $(function () {
+				
+				var sectorCounts = countByColumn(dataJs, "Sector Name");
+				var sectorSeriesData = countsToSeriesData(sectorCounts);
+				
+        $("#piechart").highcharts({
+          chart: {
+            type: 'pie'
+          },
+          title: {
+            text: 'Sectors Funded (in %)'
+          },
+          series: [{
+            name: "Sector",
+            colorByPoint: true,
+            data: sectorSeriesData
+          }]
+        });
+      });
+
+    </script>
+  </body>
+</html>

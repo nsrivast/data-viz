@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+
+    <script src="http://code.jquery.com/jquery-2.0.0.js"></script>
+	  <script src="http://code.highcharts.com/highcharts.js"></script>
+  </head>
+	
+  <body>
+		
+    <div id="bar"></div>
+		
+    <script type="text/javascript">
+      $(function () {
+				
+				var options = {
+					"chart": {
+						"type": "pie",
+						"options3d": {
+							"enabled": true,
+							"alpha": 45,
+							"beta": 0
+						}
+					},
+					"plotOptions": {
+						"pie": {
+							"allowPointSelect": true,
+							"depth": 35,
+							"cursor": "pointer"
+						},
+						"series": {
+							"dataLabels": {
+								"enabled": true
+							}
+						}
+					},
+					"subtitle": {
+						"text": null
+					},
+					"title": {
+						"text": "Regional Sales in 2014 "
+					},
+					"tooltip": {
+						"borderWidth": 3
+					},
+					"yAxis": {
+						"title": {
+							"text": "Amount"
+						}
+					},
+					"xAxis": {
+						"title": {
+							"style": {
+								"fontSize": 11
+							}
+						},
+						"type": "category"
+					},
+					"series": [
+						{
+							"index": 0,
+							"name": "SALES",
+							"data": [
+								[
+									"COAST AND CENTRAL REGION",
+									208835640
+								],
+								[
+									"HEAD OFFICE",
+									449202570
+								],
+								[
+									"NAIROBI REGION",
+									361490864
+								],
+								[
+									"WESTERN REGION",
+									81460309
+								]
+							]
+						}
+					]
+				};
+				
+				
+				$("#bar").highcharts(options);
+
+      });
+
+    </script>
+  </body>
+</html>

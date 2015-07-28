@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+
+    <script src="http://code.jquery.com/jquery-2.0.0.js"></script>
+	  <script src="http://code.highcharts.com/highcharts.js"></script>
+  </head>
+	
+  <body>
+		
+    <div id="bar"></div>
+		
+    <script type="text/javascript">
+      $(function () {
+				var options = {
+					"chart": {
+						"type": "column"
+					},
+					"plotOptions": {
+						"series": {
+							"dataLabels": {
+								"enabled": true
+							}
+						}
+					},
+					"colors": [
+						"#7cb5ec",
+						"#434348",
+						"#90ed7d",
+						"#f7a35c",
+						"#7cb5ec",
+						"#434348",
+						"#90ed7d",
+						"#f7a35c",
+						"#f45b5b",
+						"#91e8e1"
+					],
+					"credits": {
+						"enabled": false
+					},
+					"subtitle": {
+						"text": "Nairobi Branch 2014 vs 2015 "
+					},
+					"title": {
+						"text": "Quarterly sales Comparison"
+					},
+					"yAxis": {
+						"title": {
+							"text": "Premium"
+						}
+					},
+					"xAxis": {
+						"type": "category"
+					},
+					"series": [
+						{
+							"index": 0,
+							"name": "14-Q1",
+							"data": [
+								[
+									"BURU BURU",
+									10100000
+								]
+							]
+						},
+						{
+							"index": 1,
+							"name": "14-Q2",
+							"data": [
+								[
+									"BURU BURU",
+									4589100
+								]
+							]
+						},
+						{
+							"index": 2,
+							"name": "14-Q3",
+							"data": [
+								[
+									"BURU BURU",
+									7888110
+								]
+							]
+						},
+						{
+							"index": 3,
+							"name": "14-Q4",
+							"data": [
+								[
+									"BURU BURU",
+									15534256
+								]
+							]
+						},
+						{
+							"index": 4,
+							"name": "15-Q1",
+							"data": [
+								[
+									"BURU BURU",
+									13332681
+								]
+							]
+						},
+						{
+							"index": 5,
+							"name": "15-Q2",
+							"data": [
+								[
+									"BURU BURU",
+									15780452
+								]
+							]
+						},
+						{
+							"index": 6,
+							"name": "15-Q3",
+							"data": [
+								[
+									"BURU BURU",
+									3057425
+								]
+							]
+						},
+						{
+							"index": 7,
+							"name": "15-Q4",
+							"data": [
+								[
+									"BURU BURU",
+									7524249.121
+								]
+							]
+						}
+					]
+				};
+				
+				$("#bar").highcharts(options);
+
+      });
+
+    </script>
+  </body>
+</html>
